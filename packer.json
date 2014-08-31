@@ -18,7 +18,8 @@
       "type": "shell",
       "execute_command": "echo '{{user `ssh_pass`}}' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
       "scripts": [
-        "install-scripts/redis",
+        "install-scripts/sleep",
+        "install-scripts/docker",
         "install-scripts/shutdown"
       ]
     }

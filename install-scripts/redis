@@ -1,7 +1,0 @@
-#!/bin/bash -x
-
-set -e
-
-sleep 10
-apt-get update
-apt-get install -y redis-server
