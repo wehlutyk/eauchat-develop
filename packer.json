@@ -1,7 +1,7 @@
 {
   "variables": {
     "ssh_name": "ubuntu",
-    "ssh_pass": "ubuntu",
+    "ssh_password": "ubuntu",
     "hostname": "eauchat-develop",
     "domain": "eauchat.org"
   },
@@ -11,13 +11,13 @@
       "host": "localhost",
       "port": 2224,
       "ssh_username": "{{user `ssh_name`}}",
-      "ssh_password": "{{user `ssh_pass`}}"
+      "ssh_password": "{{user `ssh_password`}}"
     }
   ],
   "provisioners": [
     {
       "type": "shell",
-      "execute_command": "echo '{{user `ssh_pass`}}' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+      "execute_command": "echo '{{user `ssh_password`}}' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
       "environment_vars": [
         "PACKER_HOSTNAME={{user `hostname`}}",
         "PACKER_DOMAIN={{user `domain`}}"
