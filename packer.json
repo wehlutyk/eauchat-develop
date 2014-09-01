@@ -2,7 +2,8 @@
   "variables": {
     "ssh_name": "ubuntu",
     "ssh_pass": "ubuntu",
-    "hostname": "eauchat-develop"
+    "hostname": "eauchat-develop",
+    "domain": "eauchat.org"
   },
   "builders": [
     {
@@ -17,8 +18,13 @@
     {
       "type": "shell",
       "execute_command": "echo '{{user `ssh_pass`}}' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+      "environment_vars": [
+        "PACKER_HOSTNAME={{user `hostname`}}",
+        "PACKER_DOMAIN={{user `domain`}}"
+      ],
       "scripts": [
         "install-scripts/sleep",
+        "install-scripts/hostname",
         "install-scripts/docker",
         "install-scripts/shutdown"
       ]

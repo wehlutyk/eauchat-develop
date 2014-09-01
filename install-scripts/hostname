@@ -1,0 +1,8 @@
+#!/bin/bash -x
+
+set -e
+
+OLD_HOSTNAME=$(cat /etc/hostname)
+echo "${PACKER_HOSTNAME}" > /etc/hostname
+sed -i "s/127\.0\.1\.1\t${OLD_HOSTNAME}.*/127.0.1.1\t${PACKER_HOSTNAME}.${PACKER_DOMAIN} ${PACKER_HOSTNAME}/g" /etc/hosts
+hostname -F /etc/hostname
